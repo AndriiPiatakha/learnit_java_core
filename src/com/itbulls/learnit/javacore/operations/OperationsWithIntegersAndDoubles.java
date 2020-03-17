@@ -1,4 +1,4 @@
-package com.itbulls.learnit.javacore.operators;
+package com.itbulls.learnit.javacore.operations;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

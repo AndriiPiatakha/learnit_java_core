@@ -6,7 +6,7 @@ public class AreaOfTriangle {
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		
+		System.out.println("This program will calculate area of triangle.");
 		System.out.print("Please, enter A side of a triangle: ");
 		double aSide = sc.nextDouble();
 		

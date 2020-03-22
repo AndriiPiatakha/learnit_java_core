@@ -7,6 +7,7 @@ public class CircleCircumference {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
+		System.out.println("This program will calculate circle circumference.");
 		System.out.print("Please, enter circle radius: ");
 		double radius = sc.nextDouble();
 		

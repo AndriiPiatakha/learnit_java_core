@@ -21,7 +21,7 @@ public class StringDemo {
 		System.out.println("s.replace(\"ll\", \"LL\"): " + s.replace("ll", "LL"));	// heLLo
 		System.out.println("s.trim(): " + s.trim());						// hello
 		System.out.println("s.strip(): " + s.strip());						// hello
-		System.out.println("s.substring(0, 3): " + s.substring(0, 3));		//  h
+		System.out.println("s.substring(0, 3): " + s.substring(0, 3));		//  he
 		System.out.println("Arrays.toString(s.getBytes()): " 
 						+ Arrays.toString(s.getBytes()));	// [32, 104, 101, 108, 108, 111, 32]
 		System.out.println("Arrays.toString(s.toCharArray()): " 

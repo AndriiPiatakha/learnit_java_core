@@ -1,4 +1,4 @@
-package com.itbulls.learnit.javacore.controlstatements.hw;
+package com.itbulls.learnit.javacore.methods.hw;
 
 import static org.junit.Assert.assertEquals;
 

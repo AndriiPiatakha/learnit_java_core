@@ -1,4 +1,4 @@
-package com.itbulls.learnit.javacore.controlstatements.hw;
+package com.itbulls.learnit.javacore.controlstatements.loops.hw;
 
 import java.util.Scanner;
 

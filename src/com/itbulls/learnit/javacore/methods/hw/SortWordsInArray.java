@@ -1,4 +1,4 @@
-package com.itbulls.learnit.javacore.controlstatements.hw;
+package com.itbulls.learnit.javacore.methods.hw;
 
 import java.util.Arrays;
 import java.util.Scanner;

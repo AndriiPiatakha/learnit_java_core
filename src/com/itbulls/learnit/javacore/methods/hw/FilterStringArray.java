@@ -56,7 +56,7 @@ public class FilterStringArray {
 
 
 
-	//===================== STREAM API
+	//===================== SOLUTION WITH STREAM API
 	
 	public static String[] filterWordsByLengthStreamApi(int minLength, String[] words) {
 		return Arrays.stream(words)

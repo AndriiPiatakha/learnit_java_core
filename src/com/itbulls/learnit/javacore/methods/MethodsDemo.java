@@ -5,7 +5,7 @@ public class MethodsDemo {
 	public static void main(String[] args) {
 		int sum = sum(1, 3);
 		printToConsole(sum);
-		printToConsole(sum(2.1, 3.2));
+		printToConsole(sum(2.1, 3.5));
 		printToConsole("Some text");
 	}
 	

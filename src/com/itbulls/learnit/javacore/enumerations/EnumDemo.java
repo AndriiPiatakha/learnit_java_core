@@ -18,6 +18,13 @@ public class EnumDemo {
 				break;
 		}
 		
+		System.out.println("============ Enum valueOf()");
+		
+		Priority priority2 = Priority.valueOf("HIGH");
+		System.out.println(priority2);
+		
+//		priority2 = Priority.valueOf("high"); // java.lang.IllegalArgumentException: No enum constant com.itbulls.learnit.javacore.enumerations.Priority.high
+		
 		
 		System.out.println("============ Enum comparison");
 		
@@ -33,16 +40,11 @@ public class EnumDemo {
 		System.out.println("Priority.HIGH.ordinal(): " + Priority.HIGH.ordinal());
 		System.out.println("Priority.MEDIUM.ordinal(): " + Priority.MEDIUM.ordinal());
 		
-		System.out.println("============ Enum valueOf()");
-		
-		Priority priority2 = Priority.valueOf("HIGH");
-		System.out.println(priority2);
-		
-//		priority2 = Priority.valueOf("high"); // java.lang.IllegalArgumentException: No enum constant com.itbulls.learnit.javacore.enumerations.Priority.high
-		
+
 		System.out.println("============ Enum iteration");
 		
-		for (Priority priority3 : Priority.values()) {
+		Priority[] values = Priority.values();
+		for (Priority priority3 : values) {
 			System.out.println(priority3);
 		}
 		
@@ -55,25 +57,4 @@ public class EnumDemo {
 
 }
 
-enum Priority {
-	HIGH, MEDIUM, LOW;
-}
 
-enum Month {
-	
-	JANUARY(31), FEBRUARY(28), MARCH(31), APRIL(30), MAY(31), 
-	JUNE(30), JULY(31), AUGUST(31), SEPTEMBER(30),
-	OCTOBER(31), NOVEMBER(30), DECEMBER(31);
-	
-	private int daysAmount;
-	
-	Month(int daysAmount) {
-		this.daysAmount = daysAmount;
-	}
-	
-	public int getDaysAmount() {
-		return this.daysAmount;
-	}
-	
-	
-}

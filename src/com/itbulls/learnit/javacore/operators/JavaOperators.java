@@ -217,10 +217,8 @@ public class JavaOperators {
 //		--
 //		
 //		
-//		++
-//		—
 //		+
-//		–
+//		—
 //		!
 //		~
 //		( type )

@@ -10,10 +10,6 @@ public class Phone extends Product {
 		System.out.println("Ring!");
 	}
 	
-	public int calculateRemainingAmount() {
-		return 50; // just a stub for the sake of example
-	}
-	
 	@Override
 	public Product[] listVariants() {
 		throw new UnsupportedOperationException();

@@ -8,7 +8,7 @@ public class Demo {
 		System.out.println("Product name: " + product.getName());
 		System.out.println("Remaining amount in stock: " + product.calculateRemainingAmount());
 	
-//		phone.ring();
+//		product.ring();
 		
 		Phone phone2 = new Phone();
 		phone2.ring();

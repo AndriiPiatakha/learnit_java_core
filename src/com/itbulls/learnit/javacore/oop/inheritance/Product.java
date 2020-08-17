@@ -5,9 +5,9 @@ public class Product {
 	private int id;
 	private String name;
 
-//	public Product(String name) {
-//		this.name = name;
-//	}
+	public Product(String name) {
+		this.name = name;
+	}
 	
 	public int calculateRemainingAmount() {
 		return 100; // just a stub for the sake of example

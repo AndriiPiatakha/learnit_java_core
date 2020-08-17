@@ -4,6 +4,8 @@ public class Phone extends Product {
 	
 	// Default constructor
 	public Phone() {
+		super("Nokia");
+		System.out.println("Some code");
 	}
 	
 	public void ring() {
@@ -16,7 +18,7 @@ public class Phone extends Product {
 	}
 	
 	public int calculateAmountOfVariants() {
-		return listVariants().length;
+		return super.listVariants().length;
 	}
 
 }

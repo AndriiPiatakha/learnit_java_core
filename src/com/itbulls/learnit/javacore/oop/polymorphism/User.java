@@ -9,6 +9,8 @@ public abstract class User {
 		System.out.println("I'm an abstract user. I don't have any specific rights.");
 	};
 	
+	public abstract ProfileInformationData getProfileInformtaion(Profile profile);
+	
 	public int getId() {
 		return id;
 	}

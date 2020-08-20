@@ -25,6 +25,8 @@ public class Demo {
 		System.out.println("==============");
 		System.out.println();
 		
+		contentManager.getProfileInformtaion(new UserProfile());
+		
 		
 		
 		

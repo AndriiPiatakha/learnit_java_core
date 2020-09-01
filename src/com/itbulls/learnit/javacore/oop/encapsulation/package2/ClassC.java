@@ -6,5 +6,10 @@ public class ClassC extends ClassB {
 //	protected void doSomething() {
 //		
 //	}
+	
+	@Override
+	public void doSomethingClassB() {
+		
+	}
 
 }

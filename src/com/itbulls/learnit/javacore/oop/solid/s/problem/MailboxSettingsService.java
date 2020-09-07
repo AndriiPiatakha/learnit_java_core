@@ -1,21 +1,22 @@
 package com.itbulls.learnit.javacore.oop.solid.s.problem;
 
-import com.itbulls.learnit.javacore.oop.solid.s.solution.SecurityService;
-
 public class MailboxSettingsService {
-	
-	private SecurityService securityService;
-	
-	{
-		securityService = new SecurityService();
-	}
 
 	public void changeSecondaryEmail(User user, String newSecondaryEmail) {
-		if (securityService.hasAccess(user)) {
+		if (hasAccess(user)) {
 			user.setSecondaryEmail(newSecondaryEmail);
 		}
 	}
 
-	
+	public boolean hasAccess(User user) {
+		if (user.getRole() == Role.ADMIN) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
 
 }
+
+

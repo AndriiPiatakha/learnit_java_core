@@ -8,6 +8,7 @@ import org.junit.Test;
 
 public class PresentTest {
 
+	private static final int MORE_THAN_TEN = 20;
 	private Present testInstance;
 	
 	@Before
@@ -83,6 +84,20 @@ public class PresentTest {
 		
 		Sweet[] expectedFilteredArray = new Sweet[] {cookie, lollipop};
 		assertArrayEquals(expectedFilteredArray, testInstance.filterSweetsBySugarRange(0, 0.20));
+	}
+	
+	@Test
+	public void shouldAddMoreThanTenSweets() {
+		Sweet candy = new ChocolateCandy();
+		candy.setName("Ritter Sport");
+		candy.setSugarWeight(0.53);
+		candy.setWeight(0.05);
+		
+		for (int i =0; i < MORE_THAN_TEN; i++) {
+			testInstance.addSweet(candy);
+		}
+		
+		assertEquals(MORE_THAN_TEN, testInstance.getSweets().length);
 	}
 	
 }

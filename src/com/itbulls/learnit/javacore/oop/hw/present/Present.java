@@ -17,7 +17,7 @@ public class Present {
 		if (sweet == null) {
 			return;
 		}
-		if (sweets.length < lastIndexAdded + 1) {
+		if (sweets.length <= lastIndexAdded) {
 			sweets = Arrays.copyOf(sweets, sweets.length * 2);
 		}
 		sweets[lastIndexAdded++] = sweet;

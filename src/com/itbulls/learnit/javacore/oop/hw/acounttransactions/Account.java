@@ -48,7 +48,7 @@ public class Account {
 		if (transaction == null) {
 			return;
 		}
-		if (transactions.length > lastTransactionIndex) {
+		if (transactions.length <= lastTransactionIndex) {
 			transactions = Arrays.copyOf(transactions, transactions.length << 1);
 		}
 		transactions[lastTransactionIndex++] = transaction;

@@ -34,11 +34,6 @@ public class SignUpMenu implements Menu {
 		
 		sc = new Scanner(System.in);
 		String email = sc.nextLine();
-		
-//		String email = null;
-//		if (sc.hasNextLine()) {
-//			email = sc.nextLine();
-//		}
 
 		User user = new DefaultUser(firstName, lastName, password, email);
 		

@@ -34,7 +34,7 @@ public class DefaultUserManagementService implements UserManagementService {
 		}
 		
 		String errorMessage = checkUniqueEmail(user.getEmail());
-		if (errorMessage != null) {
+		if (errorMessage != null && !errorMessage.isEmpty()) {
 			return errorMessage;
 		}
 		
@@ -57,7 +57,7 @@ public class DefaultUserManagementService implements UserManagementService {
 				return NOT_UNIQUE_EMAIL_ERROR_MESSAGE;
 			}
 		}
-		return null;
+		return NO_ERROR_MESSAGE;
 	}
 
 	public static UserManagementService getInstance() {

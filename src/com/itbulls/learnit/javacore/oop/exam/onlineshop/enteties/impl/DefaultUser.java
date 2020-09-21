@@ -73,4 +73,8 @@ public class DefaultUser implements User {
 	public int getId() {
 		return this.id;
 	}
+	
+	void clearState() {
+		userCounter = 0;
+	}
 }

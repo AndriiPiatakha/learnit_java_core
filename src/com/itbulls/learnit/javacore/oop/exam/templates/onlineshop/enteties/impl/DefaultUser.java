@@ -59,4 +59,8 @@ public class DefaultUser implements User {
 		// <write your code here>
 		return 0;
 	}
+	
+	void clearState() {
+		// <write your code here>
+	}
 }

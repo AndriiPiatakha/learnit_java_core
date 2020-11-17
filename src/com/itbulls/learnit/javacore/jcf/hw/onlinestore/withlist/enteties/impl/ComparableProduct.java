@@ -34,11 +34,20 @@ public class ComparableProduct implements Product, Comparable<Product> {
 	public String getProductName() {
 		return this.productName;
 	}
+	
+	@Override
+	public String getCategoryName() {
+		return this.categoryName;
+	}
 
+	@Override
+	public double getPrice() {
+		return this.price;
+	}
+	
 	@Override
 	public int compareTo(Product otherProduct) {
 		return this.id - otherProduct.getId();
 	}
 
-	
 }

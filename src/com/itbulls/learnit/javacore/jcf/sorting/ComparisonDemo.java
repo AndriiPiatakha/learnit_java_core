@@ -74,6 +74,8 @@ public class ComparisonDemo {
 		
 		products.sort(new ProductNameComparator());
 		
+		System.out.println("============== Comparator demo - Sorted Products");
+		printProductsInNewLine(products);
 	}
 
 	public static void printProductsInNewLine(List<? extends Product> products) {

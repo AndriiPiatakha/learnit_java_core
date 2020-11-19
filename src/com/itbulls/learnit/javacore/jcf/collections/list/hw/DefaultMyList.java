@@ -299,6 +299,10 @@ public class DefaultMyList implements MyList, ListIterable {
 	 */
 	
 	public Node getNodeByIndex(int index) {
+		if (index > (size -1)) {
+			return null;
+		}
+		
 		if (index < (size >> 1)) {
             Node x = first;
             for (int i = 0; i < index; i++) {
@@ -373,14 +377,15 @@ public class DefaultMyList implements MyList, ListIterable {
 		
 		@Override
 		public Object previous() {
-			try {
 				cursor -= 1;
 				Object previous = getNodeByIndex(cursor);
+				if (previous == null) {
+					cursor = 0;
+					throw new NoSuchElementException();
+				}
 				lastRet = cursor;
 				return previous;
-			} catch (IndexOutOfBoundsException e) {
-				throw new NoSuchElementException();
-			}
+				
 		}
 		
 		 /**
@@ -448,14 +453,13 @@ public class DefaultMyList implements MyList, ListIterable {
 
 		@Override
 		public Object next() {
-			try {
-				Object next = getNodeByIndex(cursor);
-				lastRet = cursor;
-				cursor += 1;
-				return next;	
-			} catch (IndexOutOfBoundsException e) {
+			Object next = getNodeByIndex(cursor);
+			if (next == null) {
 				throw new NoSuchElementException();
 			}
+			lastRet = cursor;
+			cursor += 1;
+			return next;	
 		}
 		
 		/**
@@ -474,15 +478,11 @@ public class DefaultMyList implements MyList, ListIterable {
 			if (lastRet < 0) {
 				throw new IllegalStateException();
 			}
-			try {
-				DefaultMyList.this.removeNodeByIndex(lastRet);
-				if (lastRet < cursor) {
-					cursor--;
-				}
-	            lastRet = -1;
-			} catch (IndexOutOfBoundsException e) {
-				throw new NoSuchElementException();
+			DefaultMyList.this.removeNodeByIndex(lastRet);
+			if (lastRet < cursor) {
+				cursor--;
 			}
+            lastRet = -1;
 		}
 		
 	}

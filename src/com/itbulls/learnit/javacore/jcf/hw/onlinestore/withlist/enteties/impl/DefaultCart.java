@@ -1,6 +1,7 @@
 package com.itbulls.learnit.javacore.jcf.hw.onlinestore.withlist.enteties.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.itbulls.learnit.javacore.jcf.hw.onlinestore.withlist.enteties.Cart;
@@ -29,6 +30,7 @@ public class DefaultCart implements Cart {
 
 	@Override
 	public List<Product> getProducts() {
+//		return Collections.unmodifiableList(this.products); // returns unmodifiable List
 		return this.products;
 	}
 

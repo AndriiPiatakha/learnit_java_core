@@ -49,14 +49,14 @@ public class MapDemo {
 
 		Map<User, Product> userProductMap = new HashMap<>();
 
-		User user = new DefaultUser("John", "Smith", "password", "john.smith@email.com");
+		User user = new DefaultUser(1, "John", "Smith", "password", "john.smith@email.com");
 
 		Product product = new DefaultProduct(1, "product name 1", "product category 1",
 				99.99);
 
 		userProductMap.put(user, product);
 
-		User userCopy = new DefaultUser("John", "Smith", "password",
+		User userCopy = new DefaultUser(1, "John", "Smith", "password",
 				"john.smith@email.com");
 
 		System.out
@@ -65,17 +65,17 @@ public class MapDemo {
 		System.out.println("user hashCode(): " + user.hashCode());
 		System.out.println("userCopy hashCode(): " + userCopy.hashCode());
 
-		User userForHashTable = new UserForHashTables("John", "Smith", "password",
+		User userForHashTable = new UserForHashTables(1, "John", "Smith", "password",
 				"john.smith@email.com");
 		
 		userProductMap.put(userForHashTable, product);
 		
-		User copyOfUserForHashTable = new UserForHashTables("John", "Smith", "password",
+		User copyOfUserForHashTable = new UserForHashTables(1, "John", "Smith", "password",
 				"john.smith@email.com");
 		
 		System.out.println("Get product by user with hashCode() "
 				+ "and equals() overridden from map: " 
-				+ userProductMap.get(userForHashTable));
+				+ userProductMap.get(copyOfUserForHashTable));
 
 		copyOfUserForHashTable.setEmail("john.smith@newdomain.com");
 		

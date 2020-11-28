@@ -25,6 +25,15 @@ public class DefaultUser implements User {
 		this.password = password;
 		this.email = email;
 	}
+	
+	public DefaultUser(int id, String firstName, String lastName, String password, String email) {
+		this.id = id;
+		userCounter--; // to keep sequantial id
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.email = email;
+	}
 
 	@Override
 	public String getFirstName() {
@@ -48,7 +57,8 @@ public class DefaultUser implements User {
 	
 	@Override
 	public String toString() {
-		return "First Name: " + this.getFirstName() + "\t\t" +
+		return "ID: " + this.getId() + "\t\t" +
+				"First Name: " + this.getFirstName() + "\t\t" +
 				"Last Name: " + this.getLastName() + "\t\t" +
 				"Email: " + this.getEmail();
 	}

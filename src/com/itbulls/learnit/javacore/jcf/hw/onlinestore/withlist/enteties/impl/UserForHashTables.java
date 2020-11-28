@@ -27,6 +27,15 @@ public class UserForHashTables implements User {
 		this.password = password;
 		this.email = email;
 	}
+	
+	public UserForHashTables(int id, String firstName, String lastName, String password, String email) {
+		this.id = id;
+		userCounter--; // to keep sequantial id
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.email = email;
+	}
 
 	@Override
 	public String getFirstName() {
@@ -50,7 +59,8 @@ public class UserForHashTables implements User {
 	
 	@Override
 	public String toString() {
-		return "First Name: " + this.getFirstName() + "\t\t" +
+		return "ID: " + this.getId() + "\t\t" +
+				"First Name: " + this.getFirstName() + "\t\t" +
 				"Last Name: " + this.getLastName() + "\t\t" +
 				"Email: " + this.getEmail();
 	}
@@ -95,7 +105,7 @@ public class UserForHashTables implements User {
 			return false;
 		UserForHashTables other = (UserForHashTables) obj;
 		return Objects.equals(email, other.email)
-				&& Objects.equals(firstName, other.firstName) && id == other.id
+				&& Objects.equals(firstName, other.firstName) && Objects.equals(id, other.id)
 				&& Objects.equals(lastName, other.lastName)
 				&& Objects.equals(password, other.password);
 	}

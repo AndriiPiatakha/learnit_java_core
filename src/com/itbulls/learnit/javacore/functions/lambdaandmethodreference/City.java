@@ -1,4 +1,4 @@
-package com.itbulls.learnit.javacore.functions;
+package com.itbulls.learnit.javacore.functions.lambdaandmethodreference;
 
 // This is class is for the sake of the demo only. Don't pay attention to it.
 public class City {

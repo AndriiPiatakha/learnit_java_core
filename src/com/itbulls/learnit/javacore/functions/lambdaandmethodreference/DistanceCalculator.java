@@ -1,4 +1,4 @@
-package com.itbulls.learnit.javacore.functions;
+package com.itbulls.learnit.javacore.functions.lambdaandmethodreference;
 
 @FunctionalInterface
 public interface DistanceCalculator {

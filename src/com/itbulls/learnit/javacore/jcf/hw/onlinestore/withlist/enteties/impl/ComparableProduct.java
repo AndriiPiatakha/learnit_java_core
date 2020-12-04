@@ -46,6 +46,11 @@ public class ComparableProduct implements Product, Comparable<Product> {
 	}
 	
 	@Override
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+	@Override
 	public int compareTo(Product otherProduct) {
 		return this.id - otherProduct.getId();
 	}

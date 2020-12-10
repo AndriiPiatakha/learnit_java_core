@@ -1,4 +1,4 @@
-package com.itbulls.learnit.javacore.methods.hw;
+package com.itbulls.learnit.javacore.functions.hw;
 
 import static org.junit.Assert.assertEquals;
 

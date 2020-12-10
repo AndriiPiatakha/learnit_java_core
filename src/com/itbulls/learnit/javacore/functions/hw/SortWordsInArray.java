@@ -1,4 +1,4 @@
-package com.itbulls.learnit.javacore.methods.hw;
+package com.itbulls.learnit.javacore.functions.hw;
 
 import java.util.Arrays;
 import java.util.Scanner;

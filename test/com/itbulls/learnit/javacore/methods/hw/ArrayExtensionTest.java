@@ -23,10 +23,10 @@ public class ArrayExtensionTest {
 	
 	@Test
 	public void shouldGenerateRandomIntArrayInRangeFrom1To100() {
-		int amountOfElements = 1000;
+		int amountOfElements = 100;
 		int[] generateRandomArray = ArrayExtension.generateRandomArray(amountOfElements);
 		for (int i : generateRandomArray) {
-			assertTrue(i > 0);
+			assertTrue(i >= 0);
 			assertTrue(i <= 100);
 		}
 	}

@@ -27,7 +27,6 @@ public class SearchFilesByExtensionTest {
 						+ File.separator + "javacore"
 						+ File.separator + "io"
 						+ File.separator + "hw");
-		System.out.println(f.getAbsolutePath());
 		long numberOfFiles = testInstance.getNumberOfFilesWithExtension(f.toPath(), ".java");
 		System.out.println(numberOfFiles);
 		assertEquals(2, numberOfFiles);

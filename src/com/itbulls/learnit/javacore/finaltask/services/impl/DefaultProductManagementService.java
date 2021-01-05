@@ -24,8 +24,7 @@ public class DefaultProductManagementService implements ProductManagementService
 		loadProductsFromStorage();
 	}
 
-	
-	private static void loadProductsFromStorage() {
+	public static void loadProductsFromStorage() {
 		products = productStoringService.loadProducts();
 	}
 	

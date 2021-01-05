@@ -17,7 +17,7 @@ import com.itbulls.learnit.javacore.finaltask.storage.UserStoringService;
 
 public class DefaultUserStoringService implements UserStoringService {
 
-	private static final String USER_INFO_STORAGE = "users.txt";
+	private static final String USER_INFO_STORAGE = "users.csv";
 	private static final String CURRENT_TASK_RESOURCE_FOLDER = "finaltask";
 	private static final String RESOURCES_FOLDER = "resources";
 	private static final int USER_EMAIL_INDEX = 4;
@@ -29,10 +29,11 @@ public class DefaultUserStoringService implements UserStoringService {
 	private static DefaultUserStoringService instance;
 
 	@Override
-	public void storeUser(User user) {
+	public void saveUser(User user) {
 		try {
 			Files.writeString(Paths.get(RESOURCES_FOLDER, CURRENT_TASK_RESOURCE_FOLDER, USER_INFO_STORAGE),
-					convertToStorableString(user), StandardCharsets.UTF_8, StandardOpenOption.CREATE,
+					System.lineSeparator() + convertToStorableString(user), 
+					StandardCharsets.UTF_8, StandardOpenOption.CREATE,
 					StandardOpenOption.APPEND);
 		} catch (IOException e) {
 			e.printStackTrace();

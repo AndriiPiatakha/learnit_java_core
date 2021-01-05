@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.itbulls.learnit.javacore.finaltask.enteties.User;
+import com.itbulls.learnit.javacore.finaltask.enteties.impl.DefaultUser;
 import com.itbulls.learnit.javacore.finaltask.services.UserManagementService;
 import com.itbulls.learnit.javacore.finaltask.storage.impl.DefaultUserStoringService;
 
@@ -35,7 +36,7 @@ public class DefaultUserManagementService implements UserManagementService {
 			return errorMessage;
 		}
 		
-		defaultUserStoringService.storeUser(user);
+		defaultUserStoringService.saveUser(user);
 		return NO_ERROR_MESSAGE;
 	}
 
@@ -64,7 +65,11 @@ public class DefaultUserManagementService implements UserManagementService {
 	
 	@Override
 	public List<User> getUsers() {
-		return defaultUserStoringService.loadUsers();
+		List<User> users = defaultUserStoringService.loadUsers();
+		DefaultUser.setCounter(users.stream()
+									.mapToInt(user -> user.getId())
+									.max().getAsInt());
+		return users;
 	}
 
 	@Override

@@ -64,7 +64,7 @@ public class ProductCatalogMenu implements Menu {
 	}
 
 	private String readUserInput() {
-		System.out.print("Product ID to add to cart: ");
+		System.out.print("Product ID to add to cart or enter 'checkout' to proceed with checkout: ");
 		Scanner sc = new Scanner(System.in);
 		String userInput = sc.next();
 		return userInput;

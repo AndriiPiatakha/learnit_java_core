@@ -6,15 +6,19 @@ import java.util.List;
 
 import com.itbulls.learnit.javacore.finaltask.enteties.Order;
 import com.itbulls.learnit.javacore.finaltask.services.OrderManagementService;
+import com.itbulls.learnit.javacore.finaltask.storage.OrderStoringService;
+import com.itbulls.learnit.javacore.finaltask.storage.impl.DefaultOrderStoringService;
 
 
 public class DefaultOrderManagementService implements OrderManagementService {
 
 	private static DefaultOrderManagementService instance;
 	private List<Order> orders;
+	private OrderStoringService orderStoringService;
 	
 	{
 		orders = new ArrayList<>();
+		orderStoringService = DefaultOrderStoringService.getInstance();
 	}
 	
 	public static OrderManagementService getInstance() {
@@ -30,12 +34,13 @@ public class DefaultOrderManagementService implements OrderManagementService {
 			return;
 		}
 		orders.add(order);
+		orderStoringService.saveOrders(orders);
 	}
 
 	@Override
 	public List<Order> getOrdersByUserId(int userId) {
 		List<Order> userOrders = new ArrayList<>();
-		for (Order order : orders) {
+		for (Order order : orderStoringService.loadOrders()) {
 			if (order != null && order.getCustomerId() == userId) {
 				userOrders.add(order);
 			}
@@ -46,6 +51,9 @@ public class DefaultOrderManagementService implements OrderManagementService {
 
 	@Override
 	public List<Order> getOrders() {
+		if (orders == null || orders.size() == 0) {
+			orders = orderStoringService.loadOrders();
+		}
 		return this.orders;
 	}
 	

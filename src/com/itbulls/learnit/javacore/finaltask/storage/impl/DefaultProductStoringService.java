@@ -14,7 +14,7 @@ import com.itbulls.learnit.javacore.finaltask.enteties.impl.DefaultProduct;
 
 public class DefaultProductStoringService implements ProductStoringService {
 
-	private static final String PRODUCTS_INFO_STORAGE = "products.txt";
+	private static final String PRODUCTS_INFO_STORAGE = "products.csv";
 	private static final String CURRENT_TASK_RESOURCE_FOLDER = "finaltask";
 	private static final String RESOURCES_FOLDER = "resources";
 	private static final int PRODUCT_PRICE_INDEX = 3;

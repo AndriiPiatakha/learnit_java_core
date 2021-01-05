@@ -1,8 +1,9 @@
 package com.itbulls.learnit.javacore.finaltask.enteties;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface Order {
+public interface Order extends Serializable {
 
 	boolean isCreditCardNumberValid(String userInput);
 

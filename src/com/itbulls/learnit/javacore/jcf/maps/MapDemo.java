@@ -34,7 +34,7 @@ public class MapDemo {
 					+ entry.getValue());
 		}
 
-		// ====== getOrDefaultDemo
+		// ====== getOrDefault demo
 		System.out.println(
 				"getOrDefault method demo with key 4: " + map.getOrDefault(4, "default"));
 		System.out.println(

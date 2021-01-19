@@ -3,6 +3,8 @@ package com.itbulls.learnit.javacore.finaltask.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import com.itbulls.learnit.javacore.finaltask.enteties.Order;
 import com.itbulls.learnit.javacore.finaltask.services.OrderManagementService;
@@ -17,8 +19,8 @@ public class DefaultOrderManagementService implements OrderManagementService {
 	private OrderStoringService orderStoringService;
 	
 	{
-		orders = new ArrayList<>();
 		orderStoringService = DefaultOrderStoringService.getInstance();
+		orders = orderStoringService.loadOrders();
 	}
 	
 	public static OrderManagementService getInstance() {
@@ -39,14 +41,10 @@ public class DefaultOrderManagementService implements OrderManagementService {
 
 	@Override
 	public List<Order> getOrdersByUserId(int userId) {
-		List<Order> userOrders = new ArrayList<>();
-		for (Order order : orderStoringService.loadOrders()) {
-			if (order != null && order.getCustomerId() == userId) {
-				userOrders.add(order);
-			}
-		}
-		
-		return userOrders;
+		return orderStoringService.loadOrders().stream()
+				.filter(Objects::nonNull)
+				.filter(order -> order.getCustomerId() == userId)
+				.collect(Collectors.toList());
 	}
 
 	@Override

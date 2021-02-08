@@ -7,5 +7,9 @@ public class TemplateEngine {
 		// paste necessary info from a client into a template
 		return "Some template";
 	}
+	
+	public boolean evaluateTemplate(Template template) {
+		return false;
+	}
 
 }

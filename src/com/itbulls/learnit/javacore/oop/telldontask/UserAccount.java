@@ -10,7 +10,7 @@ public class UserAccount {
 
 	public void withdraw(BigDecimal amount) {
 		if (getBalance().compareTo(amount) > 0) {
-			setBalance(getBalance().min(amount));
+			setBalance(getBalance().subtract(amount));
 		}
 	}
 	

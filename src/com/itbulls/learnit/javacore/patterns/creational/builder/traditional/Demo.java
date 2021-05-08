@@ -3,7 +3,7 @@ package com.itbulls.learnit.javacore.patterns.creational.builder.traditional;
 public class Demo {
 	
 	public static void main(String[] args) {
-		ComputerDirector director = new ComputerDirector();
+		ComputerDirector director = new ComputerDirector(new CheapComputerBuilder());
 
 		director.setComputerBuilder(new CheapComputerBuilder());
 		director.buildComputer();

@@ -3,7 +3,7 @@ package com.itbulls.learnit.javacore.patterns.creational.builder.traditional;
 public class ComputerDirector {
 	private ComputerBuilder computerBuilder;
 
-	public void setComputerBuilder(final ComputerBuilder computerBuilder) {
+	public ComputerDirector(ComputerBuilder computerBuilder) {
 		this.computerBuilder = computerBuilder;
 	}
 
@@ -16,5 +16,9 @@ public class ComputerDirector {
 		computerBuilder.buildSystemBlock();
 		computerBuilder.buildDisplay();
 		computerBuilder.buildManipulators();
+	}
+
+	public void setComputerBuilder(ComputerBuilder computerBuilder) {
+		this.computerBuilder = computerBuilder;
 	}
 }

@@ -6,8 +6,9 @@ public class Demo {
 		basicCar.drive();
 		System.out.println("\n*****");
 		
-		Car sportsCar = new SportsCar(new BasicCar());
+		SportsCar sportsCar = new SportsCar(new BasicCar());
 		sportsCar.drive();
+		sportsCar.setTransmissionMode("sport+");
 		System.out.println("\n*****");
 
 		Car sportsLuxuryCar = new SportsCar(new LuxuryCar(new BasicCar()));

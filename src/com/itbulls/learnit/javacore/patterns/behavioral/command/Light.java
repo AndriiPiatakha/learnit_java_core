@@ -4,14 +4,14 @@ package com.itbulls.learnit.javacore.patterns.behavioral.command;
 
 public class Light {
 
-	private boolean on;
+	private boolean isOn;
 
 	public void switchOn() {
-		on = true;
+		isOn = true;
 	}
 
 	public void switchOff() {
-		on = false;
+		isOn = false;
 	}
 
 }

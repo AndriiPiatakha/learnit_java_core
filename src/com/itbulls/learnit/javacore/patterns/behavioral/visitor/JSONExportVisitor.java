@@ -2,12 +2,6 @@ package com.itbulls.learnit.javacore.patterns.behavioral.visitor;
 
 public class JSONExportVisitor implements ExportVisitor {
 	
-	public void export(GeoElement... elements) {
-		for (GeoElement geoElement : elements) {
-			geoElement.accept(this);
-		}
-	}
-
 	@Override
 	public void doForIndustrialBuidling(IndustrialBuilding ib) {
 		System.out.println("JSON Export for industrial building");

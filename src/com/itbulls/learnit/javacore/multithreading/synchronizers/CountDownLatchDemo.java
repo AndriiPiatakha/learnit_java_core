@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 public class CountDownLatchDemo {
 
 
-	private static final int COUNT = 4;
+	private static final int COUNT = 4;
 	public static void main(String[] args) throws InterruptedException {
 		CountDownLatch countDownLatch = new CountDownLatch(COUNT);
 		var es = Executors.newFixedThreadPool(2);

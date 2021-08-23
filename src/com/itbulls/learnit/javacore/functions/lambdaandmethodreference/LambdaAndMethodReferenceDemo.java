@@ -24,7 +24,7 @@ public class LambdaAndMethodReferenceDemo {
 			
 			dCalculator2.calculateDistance(new City(), new City());
 			
-			orderManagement.setDistanceCalculator((city1, city2) -> 5.52);
+			orderManagement.setDistanceCalculator((city1, city2) -> city1.getLogitude() - city2.getLogitude());
 			
 			
 			// ========== Method reference demo ==========

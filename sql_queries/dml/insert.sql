@@ -1,0 +1,2 @@
+INSERT INTO `learn_it_db`.`user` (`first_name`, `last_name`, `email`) VALUES ('Andrey', 'Pavlenko', 'a.pavlenko@email.com');
+INSERT INTO `learn_it_db`.`user` (`first_name`, `last_name`, `email`, `fk_user_role`) VALUES ('John', 'Smith', 'j.smith@email.com', '3');

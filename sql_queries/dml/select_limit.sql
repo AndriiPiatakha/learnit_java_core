@@ -1,0 +1,3 @@
+SELECT * FROM user ORDER BY email LIMIT 2;
+
+SELECT * FROM user ORDER BY email LIMIT 1, 2;

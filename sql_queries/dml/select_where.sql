@@ -1,0 +1,1 @@
+SELECT * FROM user WHERE last_name = 'Ivanov'; 

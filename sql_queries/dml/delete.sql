@@ -1,0 +1,1 @@
+DELETE FROM `learn_it_db`.`user` WHERE (`id` = '00004');

@@ -1,0 +1,1 @@
+SELECT * FROM user_email_role_view;

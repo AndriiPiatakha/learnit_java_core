@@ -1,0 +1,1 @@
+SELECT last_name, money, user_status(money) AS user_status FROM user ORDER BY money;  

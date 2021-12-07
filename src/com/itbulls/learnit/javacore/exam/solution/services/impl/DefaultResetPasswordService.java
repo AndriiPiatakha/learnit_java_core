@@ -7,10 +7,13 @@ import com.itbulls.learnit.javacore.exam.solution.utils.mail.MailSender;
 public class DefaultResetPasswordService implements ResetPasswordService {
 	
 	private MailSender mailSender;
+	
+	{
+		mailSender = DefaultMailSender.getInstance();
+	}
 
 	@Override
 	public void resetPasswordForUser(User user) {
-		System.out.println("Your password has been sent to your email. Check your inbox.");
 		mailSender.sendEmail(user.getEmail(), "Please, use this password to login: " + user.getPassword());
 	}
 

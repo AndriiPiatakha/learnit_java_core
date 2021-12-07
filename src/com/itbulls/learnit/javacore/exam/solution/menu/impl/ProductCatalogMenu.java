@@ -73,8 +73,10 @@ public class ProductCatalogMenu implements Menu {
 
 	private void printProductsToConsole() {
 		List<Product> products = productManagementService.getProducts();
-		for (Product product : products) {
-			System.out.println(product);
+		if (products != null) {
+			for (Product product : products) {
+				System.out.println(product);
+			}
 		}
 	}
 

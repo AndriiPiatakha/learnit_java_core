@@ -7,6 +7,8 @@ import java.util.List;
 import com.itbulls.learnit.javacore.exam.solution.enteties.Product;
 import com.itbulls.learnit.javacore.exam.solution.enteties.impl.DefaultProduct;
 import com.itbulls.learnit.javacore.exam.solution.services.ProductManagementService;
+import com.itbulls.learnit.javacore.exam.solution.storage.ProductStoringService;
+import com.itbulls.learnit.javacore.exam.solution.storage.impl.DefaultProductStoringService;
 
 
 public class DefaultProductManagementService implements ProductManagementService {
@@ -15,10 +17,20 @@ public class DefaultProductManagementService implements ProductManagementService
 	
 	private static List<Product> products;
 	
+	private static ProductStoringService productStoringService;
+
 	static {
-		initProducts();
+		productStoringService = new DefaultProductStoringService();
+		loadProductsFromStorage();
 	}
 
+	public static void loadProductsFromStorage() {
+		products = productStoringService.loadProducts();
+	}
+	
+	/**
+	 * @deprecated use loadProductsFromStorage instead
+	 */
 	private static void initProducts() {
 		products = new ArrayList<>(Arrays.asList(
 				new DefaultProduct(1, "Hardwood Oak Suffolk Internal Door", "Doors", 109.99),

@@ -1,6 +1,8 @@
 package com.itbulls.learnit.javacore.exam.solution.enteties;
 
-public interface Product {
+import java.io.Serializable;
+
+public interface Product extends Serializable {
 
 	int getId();
 

@@ -1,19 +1,26 @@
+
 package com.itbulls.learnit.javacore.exam.template.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import com.itbulls.learnit.javacore.exam.template.enteties.Order;
 import com.itbulls.learnit.javacore.exam.template.services.OrderManagementService;
+import com.itbulls.learnit.javacore.exam.template.storage.OrderStoringService;
+import com.itbulls.learnit.javacore.exam.template.storage.impl.DefaultOrderStoringService;
 
 
 public class DefaultOrderManagementService implements OrderManagementService {
 
 	private static DefaultOrderManagementService instance;
 	private List<Order> orders;
+	private OrderStoringService orderStoringService;
 	
 	{
-		orders = new ArrayList<>();
+		orderStoringService = DefaultOrderStoringService.getInstance();
+		orders = orderStoringService.loadOrders();
 	}
 	
 	public static OrderManagementService getInstance() {
@@ -29,22 +36,22 @@ public class DefaultOrderManagementService implements OrderManagementService {
 			return;
 		}
 		orders.add(order);
+		orderStoringService.saveOrders(orders);
 	}
 
 	@Override
 	public List<Order> getOrdersByUserId(int userId) {
-		List<Order> userOrders = new ArrayList<>();
-		for (Order order : orders) {
-			if (order != null && order.getCustomerId() == userId) {
-				userOrders.add(order);
-			}
-		}
-		
-		return userOrders;
+		return orderStoringService.loadOrders().stream()
+				.filter(Objects::nonNull)
+				.filter(order -> order.getCustomerId() == userId)
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public List<Order> getOrders() {
+		if (orders == null || orders.size() == 0) {
+			orders = orderStoringService.loadOrders();
+		}
 		return this.orders;
 	}
 	

@@ -36,7 +36,6 @@ public class MyOrdersMenu implements Menu {
 	private void printUserOrdersToConsole() {
 		List<Order> loggedInUserOrders = orderManagementService
 				.getOrdersByUserId(context.getLoggedInUser().getId());
-
 		if (loggedInUserOrders == null || loggedInUserOrders.size() == 0) {
 			System.out.println(
 					"Unfortunately, you don’t have any orders yet. "

@@ -9,11 +9,11 @@ import com.itbulls.learnit.javacore.jdbc.DBUtils;
 public class JDBCUpdateStatementExample {
 	
 	public static void main(String[] args) throws SQLException {
-		try (var conn = DBUtils.getConnection()) {
-			String query = "UPDATE user SET money = 120.00 WHERE id = ?";
-			PreparedStatement preparedStatement = conn.prepareStatement(query);
+		String query = "UPDATE user SET money = 120.00 WHERE id = ?";
+		
+		try (var conn = DBUtils.getConnection();
+				PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 			preparedStatement.setInt(1, 17);
-			
 			int rows = preparedStatement.executeUpdate();
 			System.out.println(rows);
 			

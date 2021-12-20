@@ -9,9 +9,9 @@ import com.itbulls.learnit.javacore.jdbc.DBUtils;
 public class JDBCDeleteStatementExample {
 	
 	public static void main(String[] args) throws SQLException {
-		try (var conn = DBUtils.getConnection()) {
-			String query = "DELETE FROM user WHERE id = ?";
-			PreparedStatement preparedStatement = conn.prepareStatement(query);
+		String query = "DELETE FROM user WHERE id = ?";
+		try (var conn = DBUtils.getConnection();
+				PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 			preparedStatement.setInt(1, 20);
 			int rows = preparedStatement.executeUpdate();
 			System.out.println(rows);

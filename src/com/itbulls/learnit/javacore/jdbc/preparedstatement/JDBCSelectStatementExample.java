@@ -10,10 +10,10 @@ import com.itbulls.learnit.javacore.jdbc.DBUtils;
 public class JDBCSelectStatementExample {
 	
 	public static void main(String[] args) throws SQLException {
-		try (var conn = DBUtils.getConnection()) {
-			String query = "SELECT * FROM user";
-			PreparedStatement preparedStatement = conn.prepareStatement(query);
-			
+		String query = "SELECT * FROM user";
+		
+		try (var conn = DBUtils.getConnection();
+				PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 			try (ResultSet rs = preparedStatement.executeQuery()) {
 				while (rs.next()) {
 					System.out.println("=================");

@@ -7,8 +7,9 @@ import java.sql.SQLException;
 public class CallableStatementExample {
 	
 	public static void main(String[] args) throws SQLException {
-		try (var conn = DBUtils.getConnection()) {
-			CallableStatement callStatement = conn.prepareCall("CALL select_user_by_email(?)");
+		try (var conn = DBUtils.getConnection();
+				CallableStatement callStatement = conn.prepareCall("CALL select_user_by_email(?)")) {
+			
 			callStatement.setString(1, "s.ivanov@email.com");
 			
 			// ONLY IN CASE out parameter register the OUT parameter before calling the stored procedure
@@ -16,7 +17,7 @@ public class CallableStatementExample {
 			
 			try (ResultSet rs = callStatement.executeQuery()) {
 				
-				while (rs.next()) {
+				if (rs.next()) {
 					System.out.println("User last name: " + rs.getString("last_name"));
 				}
 				

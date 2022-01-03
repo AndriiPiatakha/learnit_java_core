@@ -1,13 +1,14 @@
 package com.itbulls.learnit.javacore.dao.hw.solution.enteties.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import com.itbulls.learnit.javacore.dao.hw.solution.enteties.Order;
+import com.itbulls.learnit.javacore.dao.hw.solution.enteties.Purchase;
 import com.itbulls.learnit.javacore.dao.hw.solution.enteties.Product;
 
 
-public class DefaultOrder implements Order {
+public class DefaultPurchase implements Purchase {
 
 	private static final int AMOUNT_OF_DIGITS_IN_CREDIT_CARD_NUMBER = 16;
 	
@@ -50,6 +51,12 @@ public class DefaultOrder implements Order {
 		return "Order: customer id - " + this.customerId + "\t" +
 					"credit card number - " + this.creditCardNumber + "\t" + 
 					"products - " + this.products;
+	}
+
+	@Override
+	public List<Product> getProducts() {
+		ArrayList<Product> copy = new ArrayList<Product>(this.products);
+		return copy;
 	}
 
 	

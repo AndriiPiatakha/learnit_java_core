@@ -3,20 +3,21 @@ package com.itbulls.learnit.javacore.dao.hw.solution.menu.impl;
 import java.util.List;
 
 import com.itbulls.learnit.javacore.dao.hw.solution.configs.ApplicationContext;
-import com.itbulls.learnit.javacore.dao.hw.solution.enteties.Order;
+import com.itbulls.learnit.javacore.dao.hw.solution.enteties.Purchase;
 import com.itbulls.learnit.javacore.dao.hw.solution.menu.Menu;
-import com.itbulls.learnit.javacore.dao.hw.solution.services.OrderManagementService;
+import com.itbulls.learnit.javacore.dao.hw.solution.services.PurchaseManagementService;
 import com.itbulls.learnit.javacore.dao.hw.solution.services.impl.DefaultOrderManagementService;
+import com.itbulls.learnit.javacore.dao.hw.solution.services.impl.MySqlPurchaseManagementService;
 
 
 public class MyOrdersMenu implements Menu {
 
 	private ApplicationContext context;
-	private OrderManagementService orderManagementService;
+	private PurchaseManagementService purchaseManagementService;
 
 	{
 		context = ApplicationContext.getInstance();
-		orderManagementService = DefaultOrderManagementService.getInstance();
+		purchaseManagementService = new MySqlPurchaseManagementService();
 	}
 
 	@Override
@@ -34,14 +35,14 @@ public class MyOrdersMenu implements Menu {
 	}
 
 	private void printUserOrdersToConsole() {
-		List<Order> loggedInUserOrders = orderManagementService
-				.getOrdersByUserId(context.getLoggedInUser().getId());
+		List<Purchase> loggedInUserOrders = purchaseManagementService
+				.getPurchasesByUserId(context.getLoggedInUser().getId());
 		if (loggedInUserOrders == null || loggedInUserOrders.size() == 0) {
 			System.out.println(
 					"Unfortunately, you don’t have any orders yet. "
 					+ "Navigate back to main menu to place a new order");
 		} else {
-			for (Order order : loggedInUserOrders) {
+			for (Purchase order : loggedInUserOrders) {
 				System.out.println(order);
 			}
 		}

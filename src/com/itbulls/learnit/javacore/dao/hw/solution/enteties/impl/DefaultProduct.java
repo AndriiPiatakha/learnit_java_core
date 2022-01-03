@@ -49,5 +49,20 @@ public class DefaultProduct implements Product {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
+	@Override
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	@Override
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 	
 }

@@ -7,6 +7,7 @@ import com.itbulls.learnit.javacore.dao.hw.solution.enteties.User;
 import com.itbulls.learnit.javacore.dao.hw.solution.menu.Menu;
 import com.itbulls.learnit.javacore.dao.hw.solution.services.UserManagementService;
 import com.itbulls.learnit.javacore.dao.hw.solution.services.impl.DefaultUserManagementService;
+import com.itbulls.learnit.javacore.dao.hw.solution.services.impl.MySqlUserManagementService;
 
 public class CustomerListMenu implements Menu {
 
@@ -14,7 +15,7 @@ public class CustomerListMenu implements Menu {
 	private UserManagementService userManagementService;
 	
 	{
-		userManagementService = DefaultUserManagementService.getInstance();
+		userManagementService = new MySqlUserManagementService();
 		context = ApplicationContext.getInstance();
 	}
 	

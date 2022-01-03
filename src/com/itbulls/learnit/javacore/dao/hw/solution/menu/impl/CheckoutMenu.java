@@ -3,20 +3,23 @@ package com.itbulls.learnit.javacore.dao.hw.solution.menu.impl;
 import java.util.Scanner;
 
 import com.itbulls.learnit.javacore.dao.hw.solution.configs.ApplicationContext;
-import com.itbulls.learnit.javacore.dao.hw.solution.enteties.Order;
-import com.itbulls.learnit.javacore.dao.hw.solution.enteties.impl.DefaultOrder;
+import com.itbulls.learnit.javacore.dao.hw.solution.enteties.Purchase;
+import com.itbulls.learnit.javacore.dao.hw.solution.enteties.impl.DefaultPurchase;
 import com.itbulls.learnit.javacore.dao.hw.solution.menu.Menu;
-import com.itbulls.learnit.javacore.dao.hw.solution.services.OrderManagementService;
+import com.itbulls.learnit.javacore.dao.hw.solution.services.PurchaseManagementService;
 import com.itbulls.learnit.javacore.dao.hw.solution.services.impl.DefaultOrderManagementService;
+import com.itbulls.learnit.javacore.dao.hw.solution.services.impl.MySqlPurchaseManagementService;
 
 public class CheckoutMenu implements Menu {
 
+	private static final String CONRIMATION_CREDIT_CARD_WORD = "confirm";
+	
 	private ApplicationContext context;
-	private OrderManagementService orderManagementService;
+	private PurchaseManagementService purchaseManagementService;
 	
 	{
 		context = ApplicationContext.getInstance();
-		orderManagementService = DefaultOrderManagementService.getInstance();
+		purchaseManagementService = new MySqlPurchaseManagementService();
 	}
 	
 	@Override
@@ -39,7 +42,11 @@ public class CheckoutMenu implements Menu {
 	}
 	
 	private boolean createOrder(String creditCardNumber) {
-		Order order = new DefaultOrder();
+		Purchase order = new DefaultPurchase();
+		if (creditCardNumber.equalsIgnoreCase(CONRIMATION_CREDIT_CARD_WORD)) {
+			creditCardNumber = context.getLoggedInUser().getCreditCard();
+		}
+		
 		if (!order.isCreditCardNumberValid(creditCardNumber)) {
 			return false;
 		}
@@ -47,15 +54,20 @@ public class CheckoutMenu implements Menu {
 		order.setCreditCardNumber(creditCardNumber);
 		order.setProducts(context.getSessionCart().getProducts());
 		order.setCustomerId(context.getLoggedInUser().getId());
-		orderManagementService.addOrder(order);
+		purchaseManagementService.addPurchase(order);
 		return true;
 	}
 
 	@Override
 	public void printMenuHeader() {
 		System.out.println("***** CHECKOUT *****");
-		System.out.print(
-				"Enter your credit card number without spaces and press enter if you confirm purchase: ");
+		String creditCard = context.getLoggedInUser().getCreditCard();
+		if (creditCard != null && !creditCard.isEmpty()) {
+			System.out.println("Confirm your credit card number \"" + creditCard + "\" by writing \"" + CONRIMATION_CREDIT_CARD_WORD + "\": ");
+		} else {
+			System.out.print(
+					"Enter your credit card number without spaces and press enter to confirm purchase: ");
+		}
 	}
 
 }

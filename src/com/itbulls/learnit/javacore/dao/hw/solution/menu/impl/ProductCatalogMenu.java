@@ -9,6 +9,7 @@ import com.itbulls.learnit.javacore.dao.hw.solution.enteties.Product;
 import com.itbulls.learnit.javacore.dao.hw.solution.menu.Menu;
 import com.itbulls.learnit.javacore.dao.hw.solution.services.ProductManagementService;
 import com.itbulls.learnit.javacore.dao.hw.solution.services.impl.DefaultProductManagementService;
+import com.itbulls.learnit.javacore.dao.hw.solution.services.impl.MySqlProductManagementService;
 
 public class ProductCatalogMenu implements Menu {
 
@@ -18,7 +19,7 @@ public class ProductCatalogMenu implements Menu {
 
 	{
 		context = ApplicationContext.getInstance();
-		productManagementService = DefaultProductManagementService.getInstance();
+		productManagementService = new MySqlProductManagementService();
 	}
 
 	@Override

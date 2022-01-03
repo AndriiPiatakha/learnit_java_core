@@ -7,9 +7,11 @@ import com.itbulls.learnit.javacore.dao.hw.solution.enteties.User;
 public interface UserManagementService {
 
 	String registerUser(User user);
-	
+
 	List<User> getUsers();
 
 	User getUserByEmail(String userEmail);
+	
+	void resetPasswordForUser(User user);
 
 }

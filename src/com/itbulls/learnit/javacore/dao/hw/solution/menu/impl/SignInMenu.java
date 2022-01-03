@@ -7,6 +7,7 @@ import com.itbulls.learnit.javacore.dao.hw.solution.enteties.User;
 import com.itbulls.learnit.javacore.dao.hw.solution.menu.Menu;
 import com.itbulls.learnit.javacore.dao.hw.solution.services.UserManagementService;
 import com.itbulls.learnit.javacore.dao.hw.solution.services.impl.DefaultUserManagementService;
+import com.itbulls.learnit.javacore.dao.hw.solution.services.impl.MySqlUserManagementService;
 
 public class SignInMenu implements Menu {
 
@@ -15,7 +16,7 @@ public class SignInMenu implements Menu {
 
 	{
 		context = ApplicationContext.getInstance();
-		userManagementService = DefaultUserManagementService.getInstance();
+		userManagementService = new MySqlUserManagementService();
 	}
 
 	@Override

@@ -19,6 +19,10 @@ public class DefaultUser implements User {
 	
 	@Validate(pattern = ".+@.+")
 	private String email;
+	
+	private String roleName;
+	private double money;
+	private String creditCard;
 
 	{
 		id = ++userCounter;
@@ -41,6 +45,14 @@ public class DefaultUser implements User {
 		this.lastName = lastName;
 		this.password = password;
 		this.email = email;
+	}
+
+	public DefaultUser(String firstName, String lastName, String password, String email, String creditCard) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.email = email;
+		this.creditCard = creditCard;
 	}
 
 	@Override
@@ -99,4 +111,46 @@ public class DefaultUser implements User {
 	public static void setCounter(int updatedCount) {
 		userCounter = updatedCount;
 	}
+
+	@Override
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	@Override
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	@Override
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public String getRoleName() {
+		return this.roleName;
+	}
+
+	@Override
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+	
+	public double getMoney() {
+		return money;
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
+	}
+
+	public String getCreditCard() {
+		return creditCard;
+	}
+
+	public void setCreditCard(String creditCard) {
+		this.creditCard = creditCard;
+	}
+	
 }

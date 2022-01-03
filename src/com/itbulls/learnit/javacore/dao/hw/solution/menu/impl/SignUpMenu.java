@@ -8,6 +8,7 @@ import com.itbulls.learnit.javacore.dao.hw.solution.enteties.impl.DefaultUser;
 import com.itbulls.learnit.javacore.dao.hw.solution.menu.Menu;
 import com.itbulls.learnit.javacore.dao.hw.solution.services.UserManagementService;
 import com.itbulls.learnit.javacore.dao.hw.solution.services.impl.DefaultUserManagementService;
+import com.itbulls.learnit.javacore.dao.hw.solution.services.impl.MySqlUserManagementService;
 
 public class SignUpMenu implements Menu {
 
@@ -15,7 +16,7 @@ public class SignUpMenu implements Menu {
 	private ApplicationContext context;
 
 	{
-		userManagementService = DefaultUserManagementService.getInstance();
+		userManagementService = new MySqlUserManagementService();
 		context = ApplicationContext.getInstance();
 	}
 
@@ -31,15 +32,16 @@ public class SignUpMenu implements Menu {
 		System.out.print("Please, enter your password: ");
 		String password = sc.next();
 		System.out.print("Please, enter your email: ");
-		
 		sc = new Scanner(System.in);
 		String email = sc.nextLine();
+		sc = new Scanner(System.in);
+		System.out.print("Please, enter your credit card number: ");
+		String creditCard = sc.next();
 
-		userManagementService.getUsers(); // this is needed to load all users for proper ID generation
-		User user = new DefaultUser(firstName, lastName, password, email);
+		User user = new DefaultUser(firstName, lastName, password, email, creditCard);
 		
 		String errorMessage = userManagementService.registerUser(user);
-		if (errorMessage == null || errorMessage.isEmpty()) {
+		if (errorMessage != null && errorMessage.equals(MySqlUserManagementService.SUCCESSFULL_REGISTRATION_MESSAGE)) {
 			context.setLoggedInUser(user);
 			System.out.println("New user is created");
 		} else {

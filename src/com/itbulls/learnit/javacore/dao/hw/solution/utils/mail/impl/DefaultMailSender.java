@@ -1,4 +1,4 @@
-package com.itbulls.learnit.javacore.dao.hw.solution.services.impl;
+package com.itbulls.learnit.javacore.dao.hw.solution.utils.mail.impl;
 
 import com.itbulls.learnit.javacore.dao.hw.solution.utils.mail.MailSender;
 

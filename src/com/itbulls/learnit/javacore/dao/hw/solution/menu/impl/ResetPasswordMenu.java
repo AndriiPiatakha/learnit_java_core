@@ -3,21 +3,16 @@ package com.itbulls.learnit.javacore.dao.hw.solution.menu.impl;
 import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
 
-import com.itbulls.learnit.javacore.dao.hw.solution.configs.ApplicationContext;
 import com.itbulls.learnit.javacore.dao.hw.solution.enteties.User;
 import com.itbulls.learnit.javacore.dao.hw.solution.menu.Menu;
-import com.itbulls.learnit.javacore.dao.hw.solution.services.ResetPasswordService;
 import com.itbulls.learnit.javacore.dao.hw.solution.services.UserManagementService;
-import com.itbulls.learnit.javacore.dao.hw.solution.services.impl.DefaultResetPasswordService;
 import com.itbulls.learnit.javacore.dao.hw.solution.services.impl.DefaultUserManagementService;
 
 public class ResetPasswordMenu implements Menu {
 	
-	private ResetPasswordService resetPasswordService;
 	private UserManagementService userManagementService;
 
 	{
-		resetPasswordService = new DefaultResetPasswordService();
 		userManagementService = DefaultUserManagementService.getInstance();
 	}
 
@@ -29,7 +24,7 @@ public class ResetPasswordMenu implements Menu {
 		System.out.println("Your password has been sent to your email. Please, check mailbox. You will receive the email within the next 5 minutes");
 		CompletableFuture.runAsync(() -> {
 			User user = userManagementService.getUserByEmail(userInput);
-			resetPasswordService.resetPasswordForUser(user);
+			userManagementService.resetPasswordForUser(user);
 		});
 		new MainMenu().start();
 	}

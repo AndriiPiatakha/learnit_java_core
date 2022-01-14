@@ -1,5 +1,6 @@
 package com.itbulls.learnit.javacore.exam.solution.menu.impl;
 
+import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
 
@@ -15,10 +16,12 @@ public class ResetPasswordMenu implements Menu {
 	
 	private ResetPasswordService resetPasswordService;
 	private UserManagementService userManagementService;
+	private ResourceBundle rb;
 
 	{
 		resetPasswordService = new DefaultResetPasswordService();
 		userManagementService = DefaultUserManagementService.getInstance();
+		rb = ResourceBundle.getBundle(RESOURCE_BUNDLE_BASE_NAME);
 	}
 
 	@Override
@@ -26,7 +29,7 @@ public class ResetPasswordMenu implements Menu {
 		printMenuHeader();
 		Scanner sc = new Scanner(System.in);
 		String userInput = sc.next();
-		System.out.println("Your password has been sent to your email. Please, check mailbox. You will receive the email within the next 5 minutes");
+		System.out.println(rb.getString("pass.sent.to.email"));
 		CompletableFuture.runAsync(() -> {
 			User user = userManagementService.getUserByEmail(userInput);
 			resetPasswordService.resetPasswordForUser(user);
@@ -36,8 +39,8 @@ public class ResetPasswordMenu implements Menu {
 
 	@Override
 	public void printMenuHeader() {
-		System.out.println("***** RESET PASSWORD *****");
-		System.out.print("Enter your email: ");
+		System.out.println(rb.getString("reset.pass.header"));
+		System.out.print(rb.getString("enter.your.email.msg"));
 	}
 
 }

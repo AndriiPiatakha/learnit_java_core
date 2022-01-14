@@ -38,7 +38,7 @@ public class MyOrdersMenu implements Menu {
 				.getOrdersByUserId(context.getLoggedInUser().getId());
 		if (loggedInUserOrders == null || loggedInUserOrders.size() == 0) {
 			System.out.println(
-					"Unfortunately, you don’t have any orders yet. "
+					"Unfortunately, you don't have any orders yet. "
 					+ "Navigate back to main menu to place a new order");
 		} else {
 			for (Order order : loggedInUserOrders) {

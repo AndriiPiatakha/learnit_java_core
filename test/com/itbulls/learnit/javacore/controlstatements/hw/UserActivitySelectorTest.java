@@ -85,7 +85,7 @@ public class UserActivitySelectorTest {
 
 		UserActivitySelector.main(new String[] {});
 		String consoleOutput = out.toString().split(OUTPUT_RESULT_SEPARATOR)[1].strip();
-		assertEquals("This app is created by me with support of ®IT-Bulls.com", 
+		assertEquals("This app is created by me with support of Â©IT-Bulls.com", 
 				consoleOutput);
 	}
 

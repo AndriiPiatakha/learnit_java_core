@@ -1,5 +1,6 @@
 package com.itbulls.learnit.javacore.exam.solution.menu.impl;
 
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import com.itbulls.learnit.javacore.exam.solution.configs.ApplicationContext;
@@ -13,10 +14,12 @@ public class CheckoutMenu implements Menu {
 
 	private ApplicationContext context;
 	private OrderManagementService orderManagementService;
+	private ResourceBundle rb;
 	
 	{
 		context = ApplicationContext.getInstance();
 		orderManagementService = DefaultOrderManagementService.getInstance();
+		rb = ResourceBundle.getBundle(RESOURCE_BUNDLE_BASE_NAME);
 	}
 	
 	@Override
@@ -33,7 +36,7 @@ public class CheckoutMenu implements Menu {
 			break;
 		}
 		
-		System.out.println("Thanks a lot for your purchase. Details about order delivery are sent to your email.");
+		System.out.println(rb.getString("thank.you.msg"));
 		new MainMenu().start();
 
 	}
@@ -53,9 +56,8 @@ public class CheckoutMenu implements Menu {
 
 	@Override
 	public void printMenuHeader() {
-		System.out.println("***** CHECKOUT *****");
-		System.out.print(
-				"Enter your credit card number without spaces and press enter if you confirm purchase: ");
+		System.out.println(rb.getString("checkout.menu.header"));
+		System.out.print(rb.getString("enter.credit.card.number.cta"));
 	}
 
 }

@@ -33,7 +33,7 @@ public class IOStreamsDemo {
 	public static void main(String[] args) throws IOException {
 		String filePath = "testDirectory" + File.separator + "demo.txt";
 		String textToWrite = "Some text example " + System.lineSeparator() + "with Line separator and cyrylic "
-				+ "characters: это символы кириллицы" + System.lineSeparator();
+				+ "characters: РўСѓС‚ РєРёСЂРёР»Р»РёС‡РµСЃРєРёРµ СЃРёРјРІРѕР»С‹" + System.lineSeparator();
 		
 		
 		//===== Write examples

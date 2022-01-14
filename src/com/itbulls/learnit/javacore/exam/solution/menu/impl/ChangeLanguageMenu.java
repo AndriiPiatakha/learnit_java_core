@@ -1,19 +1,18 @@
 package com.itbulls.learnit.javacore.exam.solution.menu.impl;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-import com.itbulls.learnit.javacore.exam.solution.configs.ApplicationContext;
 import com.itbulls.learnit.javacore.exam.solution.menu.Menu;
 
-
-public class ChangeEmailMenu implements Menu {
-
-	private ApplicationContext context;
+public class ChangeLanguageMenu implements Menu {
+	
+	private static final int ENGLISH_ID = 1;
+	private static final int RUSSIAN_ID = 2;
 	private ResourceBundle rb;
 
 	{
-		context = ApplicationContext.getInstance();
 		rb = ResourceBundle.getBundle(RESOURCE_BUNDLE_BASE_NAME);
 	}
 
@@ -21,16 +20,25 @@ public class ChangeEmailMenu implements Menu {
 	public void start() {
 		printMenuHeader();
 		Scanner sc = new Scanner(System.in);
-		String userInput = sc.next();
-		context.getLoggedInUser().setEmail(userInput);
-		System.out.println(rb.getString("mail.changed.msg"));
+		int languageId = sc.nextInt();
+		switch (languageId) {
+		
+		case ENGLISH_ID:
+			Locale.setDefault(new Locale("en"));
+			break;
+		
+		case RUSSIAN_ID:
+			Locale.setDefault(new Locale("ru"));
+			break;
+		}
+		
 		new MainMenu().start();
 	}
 
 	@Override
 	public void printMenuHeader() {
 		System.out.println(rb.getString("change.language.header"));
-		System.out.print(rb.getString("enter.new.email.cta"));
+		System.out.print(rb.getString("select.language.cta"));
 	}
 
 }

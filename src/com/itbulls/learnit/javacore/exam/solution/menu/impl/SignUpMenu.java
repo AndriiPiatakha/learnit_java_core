@@ -1,5 +1,6 @@
 package com.itbulls.learnit.javacore.exam.solution.menu.impl;
 
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import com.itbulls.learnit.javacore.exam.solution.configs.ApplicationContext;
@@ -13,10 +14,12 @@ public class SignUpMenu implements Menu {
 
 	private UserManagementService userManagementService;
 	private ApplicationContext context;
+	private ResourceBundle rb;
 
 	{
 		userManagementService = DefaultUserManagementService.getInstance();
 		context = ApplicationContext.getInstance();
+		rb = ResourceBundle.getBundle(RESOURCE_BUNDLE_BASE_NAME);
 	}
 
 	@Override
@@ -24,13 +27,13 @@ public class SignUpMenu implements Menu {
 		printMenuHeader();
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Please, enter your first name: ");
+		System.out.print(rb.getString("enter.your.first.name"));
 		String firstName = sc.next();
-		System.out.print("Please, enter your last name: ");
+		System.out.print(rb.getString("enter.your.last.name"));
 		String lastName = sc.next();
-		System.out.print("Please, enter your password: ");
+		System.out.print(rb.getString("enter.your.pass"));
 		String password = sc.next();
-		System.out.print("Please, enter your email: ");
+		System.out.print(rb.getString("enter.your.email"));
 		
 		sc = new Scanner(System.in);
 		String email = sc.nextLine();
@@ -41,7 +44,7 @@ public class SignUpMenu implements Menu {
 		String errorMessage = userManagementService.registerUser(user);
 		if (errorMessage == null || errorMessage.isEmpty()) {
 			context.setLoggedInUser(user);
-			System.out.println("New user is created");
+			System.out.println(rb.getString("user.created.msg"));
 		} else {
 			System.out.println(errorMessage);
 		}
@@ -51,7 +54,7 @@ public class SignUpMenu implements Menu {
 
 	@Override
 	public void printMenuHeader() {
-		System.out.println("***** SIGN UP *****");		
+		System.out.println(rb.getString("sign.up.header"));		
 	}
 
 }

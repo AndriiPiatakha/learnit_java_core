@@ -35,7 +35,7 @@ public class SignInMenu implements Menu {
 					user.getLastName() + System.lineSeparator());
 			context.setLoggedInUser(user);
 		} else {
-			System.out.println("Unfortunately, such login and password doesn’t exist");
+			System.out.println("Unfortunately, such login and password doesn't exist");
 		}
 		context.getMainMenu().start();
 	}

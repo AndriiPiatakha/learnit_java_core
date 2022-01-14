@@ -1,5 +1,7 @@
 package com.itbulls.learnit.javacore.exam.solution.menu.impl;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import com.itbulls.learnit.javacore.exam.solution.Main;
@@ -9,23 +11,12 @@ import com.itbulls.learnit.javacore.exam.solution.menu.Menu;
 public class MainMenu implements Menu {
 
 	public static final String MENU_COMMAND = "menu";
-	
-	private static final String MAIN_MENU_TEXT_FOR_LOGGED_OUT_USER = "Please, enter number in console to proceed." + System.lineSeparator()
-			+ "1. Sign Up" + System.lineSeparator() + "2. Sign In"
-			+ System.lineSeparator() + "3. Product Catalog" + System.lineSeparator()
-			+ "4. My Orders" + System.lineSeparator() + "5. Settings" + System.lineSeparator() + 
-			"6. Customer List" + System.lineSeparator() + "7. Reset Password";
-
-	private static final String MAIN_MENU_TEXT_FOR_LOGGED_IN_USER = "Please, enter number in console to proceed." + System.lineSeparator()
-			+ "1. Sign Up" + System.lineSeparator() + "2. Sign Out"
-			+ System.lineSeparator() + "3. Product Catalog" + System.lineSeparator()
-			+ "4. My Orders" + System.lineSeparator() + "5. Settings" + System.lineSeparator() + 
-			"6. Customer List" + System.lineSeparator() + "7. Reset Password";
-
+	private ResourceBundle rb;
 	private ApplicationContext context;
 	
 	{
 		context = ApplicationContext.getInstance();
+		rb = ResourceBundle.getBundle(RESOURCE_BUNDLE_BASE_NAME);
 	}
 	
 	@Override
@@ -40,7 +31,7 @@ public class MainMenu implements Menu {
 			
 			Scanner sc = new Scanner(System.in);
 
-			System.out.print("User input: ");
+			System.out.print(rb.getString("user.input"));
 			String userInput = sc.next();
 			if (userInput.equalsIgnoreCase(Main.EXIT_COMMAND)) {
 				System.exit(0);
@@ -73,8 +64,11 @@ public class MainMenu implements Menu {
 				case 7:
 					menuToNavigate = new ResetPasswordMenu();
 					break mainLoop;
+				case 8:
+					menuToNavigate = new ChangeLanguageMenu();
+					break mainLoop;
 				default:
-					System.out.println("Only 1, 2, 3, 4, 5, 6, 7 is allowed. Try one more time");
+					System.out.println(rb.getString("err.msg"));
 					continue; // continue endless loop
 				}
 			}
@@ -86,11 +80,11 @@ public class MainMenu implements Menu {
 
 	@Override
 	public void printMenuHeader() {
-		System.out.println("***** MAIN MENU *****");
+		System.out.println(rb.getString("main.menu.header"));
 		if (context.getLoggedInUser() == null) {
-			System.out.println(MAIN_MENU_TEXT_FOR_LOGGED_OUT_USER);
+			System.out.println(rb.getString("menu.for.not.logged.in.user"));
 		} else {
-			System.out.println(MAIN_MENU_TEXT_FOR_LOGGED_IN_USER);
+			System.out.println(rb.getString("menu.for.logged.in.user"));
 		}
 	}
 

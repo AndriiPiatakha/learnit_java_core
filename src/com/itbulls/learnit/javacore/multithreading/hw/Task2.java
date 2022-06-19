@@ -149,6 +149,7 @@ public class Task2 {
 
 			spam.start();
 			listener.setDaemon(true);
+			listener.start();
 		}
 
 	}

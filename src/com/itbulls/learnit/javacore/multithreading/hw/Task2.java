@@ -146,9 +146,10 @@ public class Task2 {
 		public void startSpam() {
 			var spam = new Thread(this);
 			var listener = new Thread(new Listener(spam));
-
+			
 			spam.start();
 			listener.setDaemon(true);
+			listener.start();
 		}
 
 	}

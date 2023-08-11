@@ -27,7 +27,6 @@ public class MyOrdersMenu implements Menu {
 		} else {
 			printUserOrdersToConsole();
 		}
-		new MainMenu().start();
 	}
 
 	private void printUserOrdersToConsole() {

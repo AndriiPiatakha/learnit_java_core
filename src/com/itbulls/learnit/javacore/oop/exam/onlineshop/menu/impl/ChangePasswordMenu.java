@@ -20,7 +20,6 @@ public class ChangePasswordMenu implements Menu {
 		String userInput = sc.next();
 		context.getLoggedInUser().setPassword(userInput);
 		System.out.println("Your password has been successfully changed");
-		new MainMenu().start();
 	}
 
 	@Override

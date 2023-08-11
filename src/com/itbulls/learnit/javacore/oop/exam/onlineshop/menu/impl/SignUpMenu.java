@@ -44,8 +44,6 @@ public class SignUpMenu implements Menu {
 		} else {
 			System.out.println(errorMessage);
 		}
-
-		context.getMainMenu().start();
 	}
 
 	@Override

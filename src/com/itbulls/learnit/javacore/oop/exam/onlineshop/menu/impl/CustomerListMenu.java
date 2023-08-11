@@ -28,7 +28,6 @@ public class CustomerListMenu implements Menu {
 				System.out.println(user);
 			}
 		}
-		context.getMainMenu().start();
 	}
 
 	@Override

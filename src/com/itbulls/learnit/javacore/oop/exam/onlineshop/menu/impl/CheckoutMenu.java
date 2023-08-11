@@ -34,7 +34,6 @@ public class CheckoutMenu implements Menu {
 		}
 		
 		System.out.println("Thanks a lot for your purchase. Details about order delivery are sent to your email.");
-		new MainMenu().start();
 
 	}
 	

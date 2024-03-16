@@ -29,7 +29,7 @@ public class CircleCircumferenceTest {
 	}
 
 	@Test
-	public void shouldCalculateTriangleArea1() {
+	public void shouldCalculateCircleCircumference1() {
 		String input = "10";
 		InputStream in = new ByteArrayInputStream(input.getBytes());
 		System.setIn(in);
@@ -41,7 +41,7 @@ public class CircleCircumferenceTest {
 	}
 
 	@Test
-	public void shouldCalculateTriangleArea2() {
+	public void shouldCalculateCircleCircumference2() {
 		String input = "5";
 		InputStream in = new ByteArrayInputStream(input.getBytes());
 		System.setIn(in);

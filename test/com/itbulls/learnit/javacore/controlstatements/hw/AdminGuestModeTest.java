@@ -26,21 +26,21 @@ public class AdminGuestModeTest {
 	
 	@Test
 	public void shouldBeStartedInAdminMode() {
-		AdminGuestMode.main(new String[] {"asd sdqwd wqdw --admin asdqwk lq"});
+		AdminGuestMode.main(new String[] {"asd", "sdqwd", "wqdw", "--admin", "asdqwk", "lq"});
 		String consoleOutput = out.toString().trim();
 		assertEquals("Hello, Admin!", consoleOutput);
 	}
 	
 	@Test
 	public void shouldBeStartedInGuestMode() {
-		AdminGuestMode.main(new String[] {"asd sdqwd wqdw --guest asdqwk lq"});
+		AdminGuestMode.main(new String[] {"asd", "sdqwd", "wqdw", "--guest", "asdqwk", "lq"});
 		String consoleOutput = out.toString().trim();
 		assertEquals("Hello, Guest!", consoleOutput);
 	}
 	
 	@Test
 	public void shouldNotBeStartedInGuestAndAdminMode() {
-		AdminGuestMode.main(new String[] {"asd --admin wqdw --guest asdqwk lq"});
+		AdminGuestMode.main(new String[] {"asd", "--admin", "wqdw", "--guest", "asdqwk", "lq"});
 		String consoleOutput = out.toString().trim();
 		assertEquals("Please, select either 'ADMIN' or "
 				+ "'GUEST' mode for this program", consoleOutput);
